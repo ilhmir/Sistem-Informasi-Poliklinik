@@ -9,16 +9,20 @@ if (!isset($_SESSION['nip'])) {
 }
 
 if (isset($_POST['simpan'])) {
-    $id_daftar_polis = $_POST['id'];
+    $id_daftar_polis = $_GET['id'];
     $id_obat = $_POST['id_obat'];
     
     //Ambil biaya
     $biaya = mysqli_query($mysqli, "SELECT * FROM obat WHERE id = '$id_obat'");
     $rows = mysqli_fetch_assoc($biaya);
     
+    //ID daftar poli
+    $idPoli = mysqli_query($mysqli, "SELECT * FROM daftar_poli WHERE id = '$id_daftar_polis'");
+    $poli = mysqli_fetch_assoc($idPoli);
+    
     mysqli_query($mysqli, "INSERT INTO periksa (id_daftar_poli, tgl_periksa, catatan, biaya_periksa) 
                                                 VALUES (
-                                                    '" . $_POST['id'] . "',
+                                                    '" . $poli['id'] . "',
                                                     '" . $_POST['tgl_periksa'] . "',
                                                     '" . $_POST['catatan'] . "',
                                                     '" . $rows['harga'] + 150000 . "'
@@ -27,7 +31,8 @@ if (isset($_POST['simpan'])) {
     echo "<script> 
         document.location='index.php?page=periksa&id_obat=$id_obat&aksi=update&id_dapol=$id_daftar_polis';
     </script>";
-}   
+}
+
 ?>
 <h2 class="row mt-5" style="margin-left: 5px">Periksa</h2>
 <br>
@@ -49,7 +54,7 @@ if (isset($_POST['simpan'])) {
                 $nama_pasien = $row['nama'];
             }
         ?>
-            <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
+            <input type="hidden" names="id" value="<?php echo $_GET['id'] ?>">
         <?php
         }
         ?>
@@ -94,6 +99,7 @@ if (isset($_POST['simpan'])) {
         <div class="row mt-3">
             <div class=col>
                 <button type="submit" class="btn btn-primary rounded-pill px-3 mt-auto" name="simpan">Simpan</button>
+                <button class="btn btn-primary rounded-pill px-3 mt-auto"  href="index.php?page=periksa">Batal</button>
             </div>
         </div>
     </form>

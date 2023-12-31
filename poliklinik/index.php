@@ -24,35 +24,51 @@ include_once("koneksi.php");
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="index.php">Home</a>
-                </li>
+                </li>        
                 <?php 
-                    if (isset($_SESSION['username'])){
+                if (isset($_SESSION['username'])){
                 ?>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="index.php?page=dokter">Dokter</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="index.php?page=periksa">Pasien</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="index.php?page=poli">Poliklinik</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="index.php?page=obat">Obat</a>
-                </li>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item dropdown">
+                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dokter</a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="index.php?page=dokter">Profile</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="index.php?page=registerDokter">Regitrasi Dokter</a>
+                                    </li>
+                                </ul>
+                        </li>
+                    </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="index.php?page=periksa">Pasien</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="index.php?page=poli">Poliklinik</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="index.php?page=obat">Obat</a>
+                    </li>
                 <?php
-                }
+                }else if (isset($_SESSION['nip'])){
                 ?>
-                <?php 
-                    if (isset($_SESSION['nip'])){
-                ?>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="index.php?page=periksa">Periksa</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="index.php?page=riwayatPasien">Riwayat Pasien</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="index.php?page=periksa">Periksa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="index.php?page=riwayatPasien">Riwayat Pasien</a>
+                    </li>
                 <?php
+                }else{
+                ?>
+                     <li class="nav-item">
+                         <a class="nav-link" aria-current="page" href="index.php?page=registerPasien">Pasien</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" aria-current="page" href="index.php?page=poliklinik">Poliklinik</a>
+                     </li>  
+                     <?php
                 }
                 ?>
             </ul>
@@ -81,17 +97,6 @@ include_once("koneksi.php");
                 ?>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item dropdown">
-                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Registrasi</a>
-                             <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item" href="index.php?page=registerUser">Admin</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="index.php?page=registerDokter">Dokter</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
                              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Login</a>
                                 <ul class="dropdown-menu">
                                     <li>
@@ -106,7 +111,7 @@ include_once("koneksi.php");
                 <?php
                 }
             ?>
-
+            
             <!-- <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?page=registerUser">Register</a>

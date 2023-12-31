@@ -85,6 +85,7 @@ if (isset($_GET['aksi'])) {
                 <input type="text" class="form-control" name="nama" id="inputNama" placeholder="Nama Dokter" value="<?php echo $nama ?>">
             </div>
         </div>
+        </br>
         <div class="row mt-1">
             <label for="inputAlamat" class="form-label fw-bold">
                 Alamat
@@ -93,6 +94,7 @@ if (isset($_GET['aksi'])) {
                 <input type="text" class="form-control" name="alamat" id="inputAlamat" placeholder="Alamat" value="<?php echo $alamat ?>">
             </div>
         </div>
+        </br>
         <div class="row mt-1">
             <label for="inputHP" class="form-label fw-bold">
                 No HP
@@ -101,6 +103,7 @@ if (isset($_GET['aksi'])) {
                 <input type="text" class="form-control" name="no_hp" id="inputHP" placeholder="No HP" value="<?php echo $no_hp ?>">
             </div>
         </div>
+        </br>
         <div class="row mt-1">
             <label for="id_poli" class="form-label fw-bold">Pilih Poliklinik:</label>
             <div class="row ml-1" style="margin-left: 1px;">
@@ -115,6 +118,7 @@ if (isset($_GET['aksi'])) {
                 </select>
             </div>
         </div>  
+        </br>
         <div class="row mt-1">
             <label for="inputNIP" class="form-label fw-bold">
                 NIP
@@ -123,6 +127,7 @@ if (isset($_GET['aksi'])) {
                 <input type="text" class="form-control" name="nip" id="inputNIP" placeholder="NIP" value="<?php echo $nip ?>">
             </div>
         </div>  
+        </br>
         <div class="row mt-3">
             <div class=col>
                 <button type="submit" class="btn btn-primary rounded-pill px-3 mt-auto" name="simpan">Simpan</button>
@@ -169,3 +174,4 @@ if (isset($_GET['aksi'])) {
             ?>
         </tbody>
     </table>
+</div>

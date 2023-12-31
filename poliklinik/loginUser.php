@@ -50,17 +50,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <label for="username">Username</label>
                             <input type="text" name="username" class="form-control" required placeholder="Masukkan nama anda">
                         </div>
+                        </br>
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" name="password" class="form-control" required placeholder="Masukkan password anda">
                         </div>
+                        </br>
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary btn-block">Login</button>
                         </div>
                     </form>
-                    <div class="text-center">
-                        <p class="mt-3">Belum punya akun? <a href="index.php?page=registerUser">Register</a></p>
-                    </div>
                 </div>
             </div>
         </div>
