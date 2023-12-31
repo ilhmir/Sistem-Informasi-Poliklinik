@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 31, 2023 at 09:19 AM
+-- Generation Time: Dec 31, 2023 at 01:16 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,7 +41,12 @@ CREATE TABLE `daftar_poli` (
 
 INSERT INTO `daftar_poli` (`id`, `id_pasien`, `id_jadwal`, `keluhan`, `no_antrian`) VALUES
 (2, 1, 1, 'Pusing', 1),
-(3, 2, 1, 'Masuk Angin', 2);
+(3, 2, 1, 'Masuk Angin', 2),
+(20, 13, 1, 'Sakit Perut', 3),
+(22, 15, 1, 'Batuk', 4),
+(23, 16, 1, 'Sakit Pinggang', 5),
+(24, 17, 1, 'Sakit Kepala', 6),
+(26, 20, 1, 'Sakit Mata', 7);
 
 -- --------------------------------------------------------
 
@@ -60,8 +65,9 @@ CREATE TABLE `detail_periksa` (
 --
 
 INSERT INTO `detail_periksa` (`id`, `id_periksa`, `id_obat`) VALUES
-(26, 21, 5),
-(37, 29, 6);
+(46, 35, 5),
+(47, 36, 6),
+(48, 37, 6);
 
 -- --------------------------------------------------------
 
@@ -84,7 +90,7 @@ CREATE TABLE `dokter` (
 --
 
 INSERT INTO `dokter` (`id`, `nama`, `alamat`, `no_hp`, `id_poli`, `nip`, `password`) VALUES
-(2, 'Sugeng', 'Jl. Sadewa', '12345', 3, '123', '$2y$10$Ngjz78MAhZAl8VPUIBiaR.6zSN/ewst48QiTOjduufm6ExGtkXgF.');
+(2, 'Sugeng', 'Jl. Sadewa', '12345', 3, '123', '$2y$10$CtCqDixuEht1Cb9vdHmDs.i6EeQHgQ675zTlzJoiw/8wMDDKiF.xO');
 
 -- --------------------------------------------------------
 
@@ -148,9 +154,13 @@ CREATE TABLE `pasien` (
 --
 
 INSERT INTO `pasien` (`id`, `nama`, `alamat`, `no_ktp`, `no_hp`, `no_rm`) VALUES
-(1, 'Alan', 'Jl. Sadewa', '1122334455', '012345678', '202312 - 001'),
-(2, 'Usop', 'Jl Ninja', '12345678901123', '0812345678', '202312 - 002'),
-(13, 'Ayap', 'Jl Raya', '1234', '01234', '202312 - 003');
+(1, 'Alan', 'Jl. Sadewa', '1122334455', '012345678', '202312-001'),
+(2, 'Usop', 'Jl Ninja', '12345678901123', '0812345678', '202312-002'),
+(13, 'Ayap', 'Jl Raya', '1234', '01234', '202312-003'),
+(15, 'Udin', 'Jl Batur', '01234618', '08123198', '202312-004'),
+(16, 'Hibat', 'Jl Raya', '123817397129', '0232187391', '202312-005'),
+(17, 'Luffy', 'Jl Indah', '21378193791739', '0123719238791', '202312-006'),
+(20, 'Sanji', 'Jl Raya', '210398219037', '0889123962183', '202312-007');
 
 -- --------------------------------------------------------
 
@@ -171,8 +181,9 @@ CREATE TABLE `periksa` (
 --
 
 INSERT INTO `periksa` (`id`, `id_daftar_poli`, `tgl_periksa`, `catatan`, `biaya_periksa`) VALUES
-(21, 2, '2023-12-27 15:17:00', 'Istirahat', 155000),
-(29, 3, '2023-12-30 16:42:00', 'Makan', 153000);
+(35, 2, '2023-12-31 16:08:00', 'Test', 155000),
+(36, 3, '2023-12-31 16:08:00', 'Test', 153000),
+(37, 20, '2023-12-31 16:09:00', 'Test', 153000);
 
 -- --------------------------------------------------------
 
@@ -287,19 +298,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `daftar_poli`
 --
 ALTER TABLE `daftar_poli`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `detail_periksa`
 --
 ALTER TABLE `detail_periksa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `dokter`
 --
 ALTER TABLE `dokter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `jadwal_periksa`
@@ -317,13 +328,13 @@ ALTER TABLE `obat`
 -- AUTO_INCREMENT for table `pasien`
 --
 ALTER TABLE `pasien`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `periksa`
 --
 ALTER TABLE `periksa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `poli`
