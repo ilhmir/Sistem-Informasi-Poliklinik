@@ -44,7 +44,7 @@ if (isset($_GET['aksi'])) {
     <tbody>
         <!-- Kode PHP untuk menampilkan semua isi dari tabel urut-->
         <?php
-        $result = mysqli_query($mysqli, "SELECT daftar_poli.*, pasien.nama AS nama FROM pasien INNER JOIN daftar_poli WHERE id_pasien = pasien.id");
+        $result = mysqli_query($mysqli, "SELECT daftar_poli.*, pasien.nama AS nama, dokter.nip AS nip, jadwal_periksa.id_dokter AS id_dokter FROM pasien, dokter, jadwal_periksa INNER JOIN daftar_poli WHERE id_pasien = pasien.id && jadwal_periksa.id_dokter = dokter.id && id_jadwal = jadwal_periksa.id && dokter.nama = '". $_SESSION['nip'] ."'");
         $no = 1;
         while ($data = mysqli_fetch_array($result)) {
         ?>

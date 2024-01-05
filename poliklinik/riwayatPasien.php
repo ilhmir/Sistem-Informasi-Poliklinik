@@ -28,10 +28,7 @@ if (!isset($_SESSION['nip'])) {
     <tbody>
         <!-- Kode PHP untuk menampilkan semua isi dari tabel urut-->
         <?php
-        $result = mysqli_query($mysqli, "SELECT periksa.*, pasien.nama AS nama_pasien, pasien.no_rm AS no_rm, 
-        obat.nama_obat AS nama_obat, detail_periksa.id_obat AS id_obat, daftar_poli.id AS id_dapol FROM daftar_poli,
-         detail_periksa, pasien, obat INNER JOIN periksa WHERE pasien.id = daftar_poli.id_pasien && 
-         detail_periksa.id_obat = obat.id && periksa.id_daftar_poli = daftar_poli.id && periksa.id = detail_periksa.id_periksa");
+        $result = mysqli_query($mysqli, "SELECT periksa.*, pasien.nama AS nama_pasien, pasien.no_rm AS no_rm, obat.nama_obat AS nama_obat, detail_periksa.id_obat AS id_obat, daftar_poli.id AS id_dapol, dokter.nama AS nama_dokter, jadwal_periksa.id_dokter AS id_dokter FROM daftar_poli, detail_periksa, pasien, obat, dokter, jadwal_periksa INNER JOIN periksa WHERE pasien.id = daftar_poli.id_pasien && detail_periksa.id_obat = obat.id && periksa.id_daftar_poli = daftar_poli.id && periksa.id = detail_periksa.id_periksa && jadwal_periksa.id_dokter = dokter.id && jadwal_periksa.id = daftar_poli.id_jadwal  && dokter.nama = '". $_SESSION['nip'] ."'");
         $no = 1;
         while ($data = mysqli_fetch_array($result)) {
         ?>

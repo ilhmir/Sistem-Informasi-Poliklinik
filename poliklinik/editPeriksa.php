@@ -99,7 +99,9 @@ if (isset($_POST['simpan'])) {
         <div class="row mt-3">
             <div class=col>
                 <button type="submit" class="btn btn-primary rounded-pill px-3 mt-auto" name="simpan">Simpan</button>
-                <button class="btn btn-primary rounded-pill px-3 mt-auto"  href="index.php?page=periksa">Batal</button>
+                 <td>
+                     <a class="btn btn-danger rounded-pill px-3 mt-auto" href="index.php?page=periksa">Batal</a>
+                 </td>
             </div>
         </div>
     </form>

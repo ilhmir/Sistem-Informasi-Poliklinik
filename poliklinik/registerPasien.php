@@ -46,8 +46,7 @@
             $insert_query = "INSERT INTO pasien (nama, alamat, no_ktp, no_hp, no_rm) VALUES ('$nama', '$alamat', '$no_ktp','$no_hp', '$no_rm')";
             if (mysqli_query($mysqli, $insert_query)) {
                 echo "<script>
-                alert('Pendaftaran Berhasil, Berikut adalah Nomor Rekam Medis Anda : $no_rm'); 
-                document.location='index.php?page=poliklinik';
+                document.location='index.php?page=suksesDaftar&no_ktp=$no_ktp';
                 </script>";
             } else {
                 $error = "Pendaftaran gagal";

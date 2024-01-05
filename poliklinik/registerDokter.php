@@ -8,6 +8,7 @@
         $alamat = $_POST['alamat'];
         $no_hp = $_POST['no_hp'];
         $nip = $_POST['nip'];
+        $id_poli = $_POST['id_poli'];
         $password = $_POST['password'];
         $confirm_password = $_POST['confirm_password'];
 
@@ -22,11 +23,11 @@
             if ($result->num_rows == 0) {
                 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-                $insert_query = "INSERT INTO dokter (nama, nip, alamat, no_hp, password) VALUES ('$nama', '$nip', '$alamat', '$no_hp', '$hashed_password')";
+                $insert_query = "INSERT INTO dokter (nama, nip, alamat, no_hp, id_poli,password) VALUES ('$nama', '$nip', '$alamat', '$no_hp', '$id_poli','$hashed_password')";
                 if (mysqli_query($mysqli, $insert_query)) {
                     echo "<script>
                     alert('Pendaftaran Berhasil'); 
-                    document.location='index.php?page=loginDokter';
+                    document.location='index.php?page=dokter';
                     </script>";
                 } else {
                     $error = "Pendaftaran gagal";
@@ -43,7 +44,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header text-center" style="font-weight: bold; font-size: 32px;">Register</div>
+                <div class="card-header text-center" style="font-weight: bold; font-size: 32px;">Daftar</div>
                 <div class="card-body">
                     <form method="POST" action="index.php?page=registerDokter">
                         <?php
@@ -75,6 +76,21 @@
                             <input type="text" name="no_hp" class="form-control" required placeholder="Masukkan nama anda">
                         </div>
                         </br>
+                        <div class="row mt-1">
+                            <label for="id_poli" class="form-label fw-bold">Pilih Poliklinik:</label>
+                            <div class="row ml-1" style="margin-left: 1px;">
+                                <select name="id_poli" id="id_poli">
+                                    <?php
+                                    // Loop untuk mengisi dropdown dengan data dari tabel poli
+                                    $poli = mysqli_query($mysqli, "SELECT * FROM poli");
+                                    while ($rows = mysqli_fetch_assoc($poli)) {
+                                         echo "<option value='{$rows['id']}' >{$rows['nama_poli']}</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>  
+                        </br>
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" name="password" class="form-control" required placeholder="Masukkan password">
@@ -86,7 +102,7 @@
                         </div>
                         </br>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                            <button type="submit" class="btn btn-primary btn-block">Daftar</button>
                         </div>
                     </form>
                 </div>

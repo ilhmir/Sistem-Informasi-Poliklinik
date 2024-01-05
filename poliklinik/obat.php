@@ -40,7 +40,7 @@ if (isset($_GET['aksi'])) {
 ?>
 <h2 class="row mt-5" style="margin-left: 5px">Obat</h2>
 <br>
-<div class="container">
+<div class="container"  style="Margin-Bottom: 50px">
     <!--Form Input Data-->
 
     <form class="form row" method="POST" action="" name="myForm" onsubmit="return(validate());">

@@ -40,9 +40,9 @@
                                                         )");
     }
 ?>
-<div class="container mt-5">
+<div class="container mt-5" style="Margin-Bottom: 50px">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-5">
             <div class="card">
                 <div class="card-header text-center" style="font-weight: bold; font-size: 32px;">Daftar</div>
                 <div class="card-body">
@@ -98,6 +98,47 @@
                     </form>
                 </div>
             </div>
+        </div>
+        <div class="col-md-7">
+            <!-- Table-->
+            <table class="table table-hover">
+                <!--thead atau baris judul-->
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Poliklinik</th>
+                        <th scope="col">Dokter</th>
+                        <th scope="col">Jadwal</th>
+                        <th scope="col">Antrian</th>
+                    </tr>
+                </thead>
+                <!--tbody berisi isi tabel sesuai dengan judul atau head-->
+                <tbody>
+                    <!-- Kode PHP untuk menampilkan semua isi dari tabel urut-->
+                    <?php
+                    $result = mysqli_query($mysqli, "SELECT daftar_poli.*, pasien.nama AS nama_pasien, dokter.nama AS nama_dokter,
+                                                     jadwal_periksa.hari AS hari, jadwal_periksa.jam_mulai AS mulai,
+                                                     jadwal_periksa.jam_selesai AS selesai, poli.nama_poli AS nama_poli FROM pasien, 
+                                                     jadwal_periksa, dokter, poli INNER JOIN daftar_poli WHERE 
+                                                     pasien.id = daftar_poli.id_pasien && jadwal_periksa.id_dokter = dokter.id 
+                                                     && jadwal_periksa.id = daftar_poli.id_jadwal && poli.id = dokter.id_poli");
+                    $no = 1;
+                    while ($data = mysqli_fetch_array($result)) {
+                    ?>
+                        <tr>
+                            <th scope="row"><?php echo $no++ ?></th>
+                            <td><?php echo $data['nama_pasien'] ?></td>
+                            <td><?php echo $data['nama_poli'] ?></td>
+                            <td><?php echo $data['nama_dokter'] ?></td>
+                            <td><?php echo $data['hari'] . ', '. $data['mulai'] . ' - ' . $data['selesai'] ?></td>
+                            <td><?php echo $data['no_antrian'] ?></td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

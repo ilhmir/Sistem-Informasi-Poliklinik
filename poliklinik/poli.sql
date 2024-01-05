@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 31, 2023 at 01:16 PM
+-- Generation Time: Jan 05, 2024 at 01:22 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -46,7 +46,9 @@ INSERT INTO `daftar_poli` (`id`, `id_pasien`, `id_jadwal`, `keluhan`, `no_antria
 (22, 15, 1, 'Batuk', 4),
 (23, 16, 1, 'Sakit Pinggang', 5),
 (24, 17, 1, 'Sakit Kepala', 6),
-(26, 20, 1, 'Sakit Mata', 7);
+(28, 20, 4, 'Test', 7),
+(29, 25, 5, 'Sakit Mata', 8),
+(30, 26, 5, 'Sakit', 9);
 
 -- --------------------------------------------------------
 
@@ -67,7 +69,10 @@ CREATE TABLE `detail_periksa` (
 INSERT INTO `detail_periksa` (`id`, `id_periksa`, `id_obat`) VALUES
 (46, 35, 5),
 (47, 36, 6),
-(48, 37, 6);
+(48, 37, 6),
+(55, 42, 6),
+(63, 45, 6),
+(64, 56, 5);
 
 -- --------------------------------------------------------
 
@@ -90,7 +95,9 @@ CREATE TABLE `dokter` (
 --
 
 INSERT INTO `dokter` (`id`, `nama`, `alamat`, `no_hp`, `id_poli`, `nip`, `password`) VALUES
-(2, 'Sugeng', 'Jl. Sadewa', '12345', 3, '123', '$2y$10$CtCqDixuEht1Cb9vdHmDs.i6EeQHgQ675zTlzJoiw/8wMDDKiF.xO');
+(1, 'Chopper', 'Jl Aice', '089123876781', 3, '12345', '$2y$10$X7YsacAL3Kl9j9nHbHv68.jspNSvjw0j9CkoomtypfujUNyc6ogVG'),
+(2, 'Sugeng', 'Jl. Sadewa', '0891893748910', 1, '123', '$2y$10$BYf9dRsFzmuTuPqd/21jm.McMEdHH9VqrIkk4gmi1nWD7HMihYgAu'),
+(3, 'Robin', 'Jl Geni', '089789123792', 2, '123456', '$2y$10$07DnvA6Wtgp8fJ7PsZN1MeM3jyZloxnZ5JxRwGCIry7WHksOsWjPC');
 
 -- --------------------------------------------------------
 
@@ -111,7 +118,9 @@ CREATE TABLE `jadwal_periksa` (
 --
 
 INSERT INTO `jadwal_periksa` (`id`, `id_dokter`, `hari`, `jam_mulai`, `jam_selesai`) VALUES
-(1, 2, 'Selasa', '13:00:00', '15:00:00');
+(1, 2, 'Rabu', '12:00:00', '15:00:00'),
+(4, 1, 'Selasa', '14:00:00', '17:00:00'),
+(5, 3, 'Selasa', '07:00:00', '09:00:00');
 
 -- --------------------------------------------------------
 
@@ -160,7 +169,9 @@ INSERT INTO `pasien` (`id`, `nama`, `alamat`, `no_ktp`, `no_hp`, `no_rm`) VALUES
 (15, 'Udin', 'Jl Batur', '01234618', '08123198', '202312-004'),
 (16, 'Hibat', 'Jl Raya', '123817397129', '0232187391', '202312-005'),
 (17, 'Luffy', 'Jl Indah', '21378193791739', '0123719238791', '202312-006'),
-(20, 'Sanji', 'Jl Raya', '210398219037', '0889123962183', '202312-007');
+(20, 'Sanji', 'Jl Raya', '210398219037', '0889123962183', '202312-007'),
+(25, 'Nami', 'Jl Nasa', '1923691823791', '0892362718321', '202401-008'),
+(26, 'Kuro', 'Jl Entah', '0123821037189321', '08923781923691', '202401-009');
 
 -- --------------------------------------------------------
 
@@ -183,7 +194,24 @@ CREATE TABLE `periksa` (
 INSERT INTO `periksa` (`id`, `id_daftar_poli`, `tgl_periksa`, `catatan`, `biaya_periksa`) VALUES
 (35, 2, '2023-12-31 16:08:00', 'Test', 155000),
 (36, 3, '2023-12-31 16:08:00', 'Test', 153000),
-(37, 20, '2023-12-31 16:09:00', 'Test', 153000);
+(37, 20, '2023-12-31 16:09:00', 'Test', 153000),
+(39, 26, '2024-01-05 15:34:00', 'Makan', 150000),
+(40, 26, '2024-01-05 15:34:00', 'Makan', 153000),
+(42, 22, '2024-01-05 18:15:00', 'sakit', 150000),
+(43, 22, '2024-01-05 18:15:00', 'sakit', 150000),
+(44, 22, '2024-01-05 18:15:00', 'sakit', 153000),
+(45, 23, '2024-01-05 18:28:00', 'Test', 150000),
+(46, 23, '2024-01-05 18:28:00', 'Test', 150000),
+(47, 23, '2024-01-05 18:28:00', 'Test', 150000),
+(48, 23, '2024-01-05 18:28:00', 'Test', 150000),
+(49, 23, '2024-01-05 18:28:00', 'Test', 150000),
+(50, 23, '2024-01-05 18:28:00', 'Test', 150000),
+(51, 23, '2024-01-05 18:28:00', 'Test', 150000),
+(52, 23, '2024-01-05 18:28:00', 'Test', 150000),
+(53, 23, '2024-01-05 18:28:00', 'Test', 150000),
+(54, 23, '2024-01-05 18:28:00', 'Test', 150000),
+(55, 23, '2024-01-05 19:17:00', 'Test', 153000),
+(56, 24, '2024-01-05 19:17:00', 'TEST', 155000);
 
 -- --------------------------------------------------------
 
@@ -298,25 +326,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `daftar_poli`
 --
 ALTER TABLE `daftar_poli`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `detail_periksa`
 --
 ALTER TABLE `detail_periksa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `dokter`
 --
 ALTER TABLE `dokter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `jadwal_periksa`
 --
 ALTER TABLE `jadwal_periksa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `obat`
@@ -328,13 +356,13 @@ ALTER TABLE `obat`
 -- AUTO_INCREMENT for table `pasien`
 --
 ALTER TABLE `pasien`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `periksa`
 --
 ALTER TABLE `periksa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `poli`

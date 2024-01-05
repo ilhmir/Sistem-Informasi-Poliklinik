@@ -10,13 +10,13 @@ include_once("koneksi.php");
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sistem Informasi Poliklinik</title>
+    <title>Poliklinik</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   </head>
   <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Sistem Informasi Poliklinik</a>
+        <a class="navbar-brand" href="#">Poliklinik</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -42,7 +42,7 @@ include_once("koneksi.php");
                         </li>
                     </ul>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="index.php?page=periksa">Pasien</a>
+                        <a class="nav-link" aria-current="page" href="index.php?page=pasien">Pasien</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="index.php?page=poli">Poliklinik</a>
@@ -58,6 +58,9 @@ include_once("koneksi.php");
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="index.php?page=riwayatPasien">Riwayat Pasien</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="index.php?page=jadwal">Jadwal</a>
                     </li>
                 <?php
                 }else{
@@ -129,20 +132,20 @@ include_once("koneksi.php");
             // if (isset($_GET['page'])) {
             //     include($_GET['page'] . ".php");
             // } else {
-            //     echo "<br><h2>Selamat Datang di Sistem Informasi Poliklinik</h2><hr>Silakan Login untuk menggunakan sistem. Jika belum memiliki akun silakan Register terlebih dahulu.";
+            //     echo "<br><h2>Selamat Datang di Poliklinik</h2><hr>Silakan Login untuk menggunakan sistem. Jika belum memiliki akun silakan Register terlebih dahulu.";
             // }
         
             if (isset($_GET['page'])) {
                 include($_GET['page'] . ".php");
             } else {
-                echo "<br><h2>Selamat Datang di Sistem Informasi Poliklinik";
+                echo "<br><h2>Selamat Datang di Poliklinik";
 
                 if (isset($_SESSION['username'])) {
                     //jika sudah login tampilkan username
                     echo ", " . $_SESSION['username'] . "</h2><hr>";
                 }else if (isset($_SESSION['nip'])) {
                     //jika sudah login tampilkan nama
-                    echo ", " . $_SESSION['nip'] . "</h2><hr>";
+                    echo ", Dokter " . $_SESSION['nip'] . "</h2><hr>";
                 }else {
                     echo "</h2><hr>Silakan Login untuk menggunakan sistem. Jika belum memiliki akun silakan Register terlebih dahulu.";
                 }
