@@ -66,6 +66,7 @@
                             <label for="id_poli" class="form-label fw-bold">Poliklinik:</label>
                             <div class="row ml-1" style="margin-left: 1px;">
                                 <select name="id_poli" id="id_poli">
+                                    <option>Pilih Poliklinik</option>  
                                     <?php
                                     // Loop untuk mengisi dropdown dengan data dari tabel poli
                                     //$poli = mysqli_query($mysqli, "SELECT * FROM poli");
@@ -122,7 +123,7 @@
                                                      jadwal_periksa.jam_selesai AS selesai, poli.nama_poli AS nama_poli FROM pasien, 
                                                      jadwal_periksa, dokter, poli INNER JOIN daftar_poli WHERE 
                                                      pasien.id = daftar_poli.id_pasien && jadwal_periksa.id_dokter = dokter.id 
-                                                     && jadwal_periksa.id = daftar_poli.id_jadwal && poli.id = dokter.id_poli");
+                                                     && jadwal_periksa.id = daftar_poli.id_jadwal && poli.id = dokter.id_poli ORDER BY daftar_poli.no_antrian");
                     $no = 1;
                     while ($data = mysqli_fetch_array($result)) {
                     ?>

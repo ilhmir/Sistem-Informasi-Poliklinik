@@ -12,7 +12,8 @@ if (isset($_POST['simpan'])) {
     mysqli_query($mysqli, "UPDATE jadwal_periksa SET 
                                    hari = '" . $_POST['hari'] . "',
                                    jam_mulai = '" . $_POST['mulai'] . "',
-                                   jam_selesai = '" . $_POST['selesai'] . "'
+                                   jam_selesai = '" . $_POST['selesai'] . "',
+                                   status = '" . $_POST['status'] . "'
                                    WHERE
                                    id = '" . $_GET['id'] . "'");
 
@@ -40,6 +41,7 @@ if (isset($_POST['simpan'])) {
                 $hari = $row['hari'];
                 $mulai = $row['jam_mulai'];
                 $selesai = $row['jam_selesai'];
+                $status = $row['status'];
             }
         ?>
             <input type="hidden" names="id" value="<?php echo $_GET['id'] ?>">
@@ -78,6 +80,19 @@ if (isset($_POST['simpan'])) {
             </label>
             <div>
                 <input type="time" class="form-control" name="selesai" id="inputSelesai" placeholder="Selesai" value="<?php echo $selesai ?>">
+            </div>
+        </div>
+        </br>
+         <div class="row">
+            <label for="inputStatus" class="form-label fw-bold">
+                Status
+            </label>
+            <div>
+                <select class="form-control" name="status" id="inputStatus">
+                    <option value="<?php echo $status ?>">Status saat ini: <?php echo $status ?></option>
+                    <option value="Aktif">Aktif</option>
+                    <option value="Tidak Aktif">Tidak Aktif</option>
+                </select>
             </div>
         </div>
         </br>

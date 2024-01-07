@@ -12,12 +12,13 @@ if (isset($_POST['simpan'])) {
         $dokter_id = mysqli_query($mysqli, "SELECT * FROM dokter WHERE nama = '". $_SESSION['nip'] ."'");
         $row = mysqli_fetch_array($dokter_id);
         $id_dokter = $row['id'];
-        mysqli_query($mysqli, "INSERT INTO jadwal_periksa (id_dokter, hari, jam_mulai, jam_selesai) 
+        mysqli_query($mysqli, "INSERT INTO jadwal_periksa (id_dokter, hari, jam_mulai, jam_selesai, status) 
                                                     VALUES (
                                                         '" . $id_dokter . "',
                                                         '" . $_POST['hari'] . "',
                                                         '" . $_POST['mulai'] . "',
-                                                        '" . $_POST['selesai'] . "'
+                                                        '" . $_POST['selesai'] . "',
+                                                        '". "Tidak Aktif" ."'
                                                     )");
 
     echo "<script> 

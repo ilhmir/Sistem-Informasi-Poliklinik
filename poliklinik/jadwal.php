@@ -30,6 +30,7 @@ $row = mysqli_fetch_array($dokter_id);
             <th scope="col">Hari</th>
             <th scope="col">Mulai</th>
             <th scope="col">Selesai</th>
+            <th scope="col">Status</th>
             <th scope="col">Aksi</th>
         </tr>
     </thead>
@@ -49,6 +50,7 @@ $row = mysqli_fetch_array($dokter_id);
                 <td><?php echo $data['hari'] ?></td>
                 <td><?php echo $data['jam_mulai'] ?></td>
                 <td><?php echo $data['jam_selesai'] ?></td>
+                <td><?php echo $data['status'] ?></td>
                 <td>
                     <a class="btn btn-success rounded-pill px-3" href="index.php?page=editJadwal&id=<?php echo $data['id'] ?>">Ubah</a>
                 </td>

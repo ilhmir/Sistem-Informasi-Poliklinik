@@ -54,7 +54,7 @@ if (isset($_GET['aksi'])) {
                 <td><?php echo $data['nama'] ?></td>
                 <td><?php echo $data['keluhan'] ?></td>
                 <td>
-                    <a class="btn btn-success rounded-pill px-3" href="index.php?page=editPeriksa&id=<?php echo $data['id'] ?>">Ubah</a>
+                    <a class="btn btn-success rounded-pill px-3" href="index.php?page=editPeriksa&id=<?php echo $data['id'] ?>">Periksa</a>
                 </td>
             </tr>
         <?php

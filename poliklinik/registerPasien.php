@@ -23,9 +23,9 @@
             $jumlah_pasien = $row['COUNT(*)'];
         
             // Periksa jumlah pasien untuk menentukan nomor RM akhir
-            if ($jumlah_pasien < 10) {
+            if ($jumlah_pasien < 9) {
                 $no_rm_aknir = "00";
-            } else if ($jumlah_pasien < 100) {
+            } else if ($jumlah_pasien < 99) {
                 $no_rm_aknir = "0";
             } else {
                 $no_rm_aknir = "";
